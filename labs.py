@@ -451,3 +451,388 @@
 #    
 #    time.sleep(0.2) # Paus för att simulera realtid
 #
+
+#def greet(name, age): #name, age = parameter
+#    return print("hello", name, ", your age is:", age)
+#
+#greet("Alve", 32) #alve, 32 = argument
+
+""" '''LAB 4'''
+
+def greet():
+    return True
+def show_course_name():
+    return "banana"
+def print_seperator():
+    print(" ")
+
+print(greet())
+print_seperator()
+print(show_course_name())
+print(greet())
+print_seperator()
+print(show_course_name()) """
+
+#shift + alt + a
+
+""" def greet_person(name):
+    print("Hello", name)
+
+def introduce(name, city):
+    print("Welcome to", city, ",", name, "!")
+
+greet_person("Alve")
+introduce("Alve", "Göteborg")
+ """
+
+""" def add(a, b):
+    return a + b
+def subtract(a, b):
+    return a - b
+def multiply(a, b):
+    return a * b
+def divide(a, b): #parameters in the function
+    return a / b
+
+a, b = 3, 5
+
+print(add(a,b), subtract(a,b), multiply(a,b), divide(a,b)) #argument sent into the function """
+
+""" def calculate_area(width, length):
+    return width * length
+
+def calculate_volume(area, height):
+    return area * height
+
+x = 230
+y = 210
+z = 0.1
+
+print(calculate_volume(calculate_area(x, y), z))
+ """
+
+""" def is_even(num):
+    return num % 2 == 0
+
+print(is_even(234234)) """
+
+""" def get_larger(a, b):
+    if a >= b:
+        return a
+    else:
+        return b
+
+print(get_larger(13,11))
+print(get_larger(11,14))
+print(get_larger(12,12)) """
+
+""" def classify_score(score):
+    if score > 70:
+        return "PASS"
+
+    return "FAIL"
+
+print(classify_score(123))
+print(classify_score(12)) """
+
+""" def greet(name, greeting = "Hello "):
+    return(greeting + name)
+
+print(greet("Alve"))
+print(greet("Alve", "Konnichiwa "))
+print(greet(greeting = "Alve", name = "Konnichiwa ")) """
+
+""" def calculate_price(price, quantity = 1, discount = 0):
+    return price * quantity * (100-discount)/100
+
+
+print(calculate_price(100, 1, 30)) """
+
+""" def create_profile(name, city = "unknown", active = True):
+    return {"Name" : name, "City" : city, "Active" : active}
+
+print(create_profile("Alve", "Göteborg")) """
+
+""" def test(a, b):
+    return b, a
+
+print(test(b = 1, a = 2)) """
+""" 
+def calculate_total_even(nums):
+    total_even = 0
+    for num in nums:
+        if num % 2 == 0:
+            total_even += 1
+
+    return total_even
+
+listx = [1, 2, 3, 4, 5, 6, 7]
+
+print(calculate_total_even(listx)) """
+
+""" def get_long_words(words, minimum_length):
+    listx = []
+
+    for word in words:
+        if len(word) > minimum_length:
+            listx.append(word)
+
+    return listx
+
+listy = ["Hello", "dear", "this", "is", "the", "band", "'Have a nice life'", "playing", "as", "of", "right", "now"]
+
+print(get_long_words(listy, 4)) """
+
+
+
+""" def find_student(students, name):
+    for student in students:  # Loopa igenom listan
+        if student["student_name"] == name:
+            return True
+    return False
+
+
+list_of_students = [
+    {"student_name": "Alve"},
+    {"student_name": "Damon"},
+    {"student_name": "Per"},
+    {"student_name": "stanley"},
+    {"student_name": "benny"}
+]
+
+print(find_student(list_of_students, "Damon")) 
+     """
+
+""" def average_score(students):
+    total = 0
+    counter = 0
+    for score in students:
+        total += score
+        counter += 1
+        
+    return total/counter
+
+listx = [78,67,70,99,70,53,70,86,85]
+
+print(average_score(listx)) """
+
+""" def get_active_users(users):
+    result = [user for user in users if user["active"]]
+    return result
+
+list_of_students = [
+    {"student_name": "Alve", "active" : False},
+    {"student_name": "Damon", "active" : True},
+    {"student_name": "Per", "active" : True},
+    {"student_name": "stanley", "active" : True},
+    {"student_name": "benny", "active" : False}
+]
+
+print(get_active_users(list_of_students)) """
+
+""" def c_to_f(c):
+    return (c * 9/5) + 32
+
+def classification(c):
+    if c > 20:
+        return "hot"
+    elif c > 14:
+        return "warm"
+    else:
+        return "cold"
+
+def formatted_temp(c):
+    fahrenheit = c_to_f(c)
+    temp_class = classification(c)
+
+    return f"The temperature is {c} celsius and {fahrenheit:.2f} fahrenheit, it's {temp_class}"
+
+temps = [12, 18, 22, -5]
+
+for temp in temps:
+    print(formatted_temp(temp)) """
+
+""" def subtotal(cost, quantity):
+
+    return cost * quantity
+
+def discount(discount):
+
+    return (100-discount)/100
+
+def final_total(subtotal, taxes, discount):
+
+    return (subtotal * discount) * taxes
+
+taxes = 1.30
+
+price = 100
+number_of_cakes = 4
+discount_percentage = 25
+
+s = subtotal(price, number_of_cakes)
+d = discount(discount_percentage)
+
+print(final_total(s, taxes, d)) """
+
+""" Part F - Applied challenge: Event registration processor 
+ 
+1. Create functions to normalize a participant name, validate an age range using boolean return values, calculate a registration fee based on age/student status, and create a participant dictionary. 
+2. Create at least eight participant dictionaries using your functions. 
+3. Write a function that receives the participant list and returns the total expected registration revenue. 
+4. Write a function that returns only student participants. 
+5. Write a function that returns the oldest participant. 
+6. Write a function that creates a readable summary string for one participant. 
+7. Keep input/output responsibilities separate from calculation functions as much as possible. """
+
+""" def norm_name(name1, name2):
+    return name1 + name2
+
+def val_age_range(age):
+    if age < 18 or age > 65:
+        return True
+    return False
+
+def calc_fee(age, student):
+    if student or val_age_range(age):
+        return 50
+    return 100
+
+
+
+     """
+
+""" "total = 100
+
+def add_tax(total):
+    total = total * 1.25
+    return total
+
+print(add_tax(total))" """
+
+
+""" def return_minmax(listx):
+    listx.sort()
+    return listx[0], listx[-1]
+
+lista = [1, 2, 3, 0, -999, 4, 999, 5, 6, 7]
+
+print(return_minmax(lista)) """
+
+""" def palindrome(word):
+    x = len(word)//2
+    for i in range(0, x-1, 1):
+        if word[i] != word[-i]:
+            print("ingen palle")
+            return
+
+    print("de e en palle")
+    return True
+        
+
+print(palindrome(input())) """  
+
+""" def palin(word):
+    return word == word[::-1]
+
+x = "anna"
+print(palin(x)) """
+
+""" def freq(text_input):
+    freq_dict = {}
+    for ltr in text_input:
+        # Om 'ltr' inte finns än, ta 0 och plussa på 1.
+        freq_dict[ltr] = freq_dict.get(ltr, 0) + 1
+        
+    return freq_dict
+
+text = "hej jag heter alve bananer skoj bla bla bla"
+
+print(freq(text)) """
+
+""" def pz_or_n(nums):
+    p, n, z, = 0, 0, 0
+
+    for num in nums:
+        if num > 0:
+            p += 1
+        elif num < 0:
+            n += 1
+        else:
+            z += 1
+
+    return {"positive" : p, "zero" : z, "negative" : n}
+
+
+listx = [1, 2, 3, 4, 5, 0,0,0,0 , -1 ,-1 ,-2 ,-3 ,-4]
+
+print(pz_or_n(listx))
+ """
+
+""" course_name = "lexicon"
+
+def functionx():
+    course_name = "bananer"
+    print(course_name)
+    return
+
+functionx()
+
+print(course_name) """
+""" 
+def counter123():
+    counter = 0
+    for i in range(0, 30, 1):
+        counter += i
+
+    print(counter)
+    return
+
+
+counter123()
+
+print(counter) """
+
+""" global_variable_x = 1
+
+def change_global_fail():
+    global_variable_x = 0
+    return
+G
+change_global_fail()
+print(global_variable_x)
+ """
+
+""" global_variable_x = 1
+
+def change_global_fail(varx):
+    varx = 0
+    return varx
+
+global_variable_x = change_global_fail(global_variable_x)
+print(global_variable_x) """
+
+""" def outer():
+    x = 1
+    def inner():
+        print(x)
+        return
+    inner()
+    return
+
+outer() """
+
+""" total_sum = 100
+text_str = "Python"
+numbers_list = [1, 2, 3]
+max_value = 50 """
+
+def add_all(*numbers):
+    for num in numbers:
+        num += num
+
+    return num
+
+nums = [1, 2, 3 ,3 ,4 ,5 ,6 ,7]
+
+print(add_all(nums))
