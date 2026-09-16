@@ -104,3 +104,40 @@ for e, song in enumerate(songs, 1):
 for e, task in enumerate(tasks, 1):
     print(f"TASK {e}: {task}") """
 
+#values = [123, 345, 64, 77,88, 1, 2, 3, 4, 5, 6, 100, 20, 32]
+#
+#for e, value in enumerate(values):
+#    if value > 25:
+#        print(e)
+
+#values = [123, 345, 64, 77,88, 1, 2, 3, 4, 5, 6, 100, 20, 32]
+#
+#for i in range(len(values)):
+#    if values[i] % 2 == 0:
+#        print("index:", i, "value :", values[i])
+#
+#
+#for e, value in enumerate(values):
+#    if value % 2 == 0:
+#        print("index:", e, "value", value)
+#
+#enumerate gör koden renare eftersom vi slipper manuell indexering (values[i]) i varje iteration.
+#Python packar upp både index och värde direkt i loophuvudet. 
+#Det minskar risken för fel, gör koden mer lättläst och fungerar på alla typer av dataströmmar (inte bara listor).
+
+##########PART D
+
+#names = ["alve", "heithem", "krille p", "jord", "ando"]
+#scores = [123, 321, 423, 234, 543, 345]
+#
+#student_scores = dict(zip(names, scores))
+#
+#print(student_scores)
+
+#product = ["bananer", "apelsiner", "citroner", "papaya", "mangoo"]
+#price = [10, 20, 30, 10, 20, 30]
+#stock = [4, 2, 4, 2, 3, 6]
+#
+#lager = list(zip(product, price, stock))
+#print(lager)
+
