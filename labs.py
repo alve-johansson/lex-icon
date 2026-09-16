@@ -827,12 +827,229 @@ text_str = "Python"
 numbers_list = [1, 2, 3]
 max_value = 50 """
 
-def add_all(*numbers):
+""" def add_all(*numbers):
+    numsum = 0
     for num in numbers:
-        num += num
+        numsum += num
 
-    return num
+    return numsum
 
 nums = [1, 2, 3 ,3 ,4 ,5 ,6 ,7]
 
-print(add_all(nums))
+print(add_all(*nums)) """
+
+""" def average(*nums):
+    numsum = 0
+    if len(nums) == 0:
+        return f"no swagger"
+    else:
+        for num in nums:
+            numsum += num
+
+    return numsum/len(nums)
+
+tal = []
+
+print(average(*tal)) """
+""" 
+def longest_word(*words):
+    longest = ""
+    for word in words:
+        if len(word) > len(longest):
+            longest = word
+
+
+    return longest
+
+
+listx = ["alve", "palve", "paron", "pong", "asdasdsad", "asdasdölkasödlkasöldk"]
+
+print(longest_word(*listx)) """
+
+""" def build_sentence(separator, *words):
+    newstring = separator.join(words)
+    return newstring
+
+
+x = build_sentence(" ---- ", "alve", "palve", "paron", "pong", "asdasdsad", "asdasdölkasödlkasöldk")
+print(x) """
+
+""" def describe_scores(student_name, *scores):
+    number_of_scores = 0
+    tot_score = 0
+    for score in scores:
+        number_of_scores += 1
+        tot_score += score
+
+    avg = tot_score/number_of_scores
+    x = f"{student_name} has {number_of_scores} grades, with an average of {avg}"
+
+    return x
+
+print(describe_scores("Alve", 90, 89, 70, 74, 64, 66, 90)) """
+
+""" tal = [10,20,30]
+
+def add(a, b, c):
+    return a + b + c
+
+print(add(*tal)) """
+
+
+""" mytuple = ("alve", "johansson", "gbg")
+
+
+def funkychicken(*args):
+    return f"fitta {args[0]} kuk {args[1]} gbg: {args[2]}"
+
+print(funkychicken(*mytuple)) """
+
+""" 
+def add(first,*args, last):
+    numsum = 0
+    for arg, e in enumerate(args):
+        numsum += arg[e]
+
+    print(numsum)
+    numsum += first
+    numsum += last
+    print(numsum)
+    return numsum
+
+lista = [1, 2, 2, 2, 2, 3]
+listb = [1, 2, 2, 2,2,2,2,2, 2, 2, 3]
+listc = [1, 2, 2, 2, 2, 3,3,3,3,3,3,3,3,3]
+
+add(lista[0],lista[1:-2],last = lista[-1])
+add(lista[0],lista[1:-2],last = lista[-1])
+add(lista[0],lista[1:-2],last = lista[-1])
+ """
+
+""" values_1 = [10, 20, 30, 40, 50]
+first, *middle, last = values_1
+
+print(f"first: {first}")   
+print(f"middle: {middle}")  
+print(f"last: {last}")      
+
+print("-" * 20)
+
+values_2 = ["A", "B", "C"]
+first, *middle, last = values_2
+
+print(f"first: {first}")   
+print(f"middle: {middle}")  
+print(f"last: {last}")     
+
+print("-" * 20)
+
+values_3 = [1, 2]
+first, *middle, last = values_3
+
+print(f"first: {first}")   
+print(f"middle: {middle}")  
+print(f"last: {last}")      """
+
+### difference, in function definition * means "unlimited"
+#  parameters, but when calling a function in instead is a symbol or a function that unpacks a variable 
+
+""" def show_profile(**info):
+    for k,v, in info.items():
+        print(k, v)
+
+    return 
+
+mydic = {"bananer" : "i pyjamas", "spagehetitit" : "gorgonzola", "123" : "abc"}
+
+show_profile(**mydic) """
+""" 
+def create_user(username, **details):
+    mydic = {username}
+    for detail in details:
+        mydic[username] = detail
+
+    print(mydic)
+    return """
+
+""" numbers = [1, 2, 3, 4, 5]
+
+doubled_numbers = [number * 2 for number in numbers]
+
+print(doubled_numbers) """
+
+""" numbers = [1,2,3]
+square = [number ** 2 for number in numbers]
+print(square) """
+
+""" names = ["Alve", "Graham", "Harman"]
+upper_names = [name.upper() for name in names]
+print(upper_names) """
+
+""" numbers = [1,2,3,4,5,6]
+result = [number **2 for number in numbers if number % 2 == 0]
+print(result) """
+
+""" names = ["Ada", "Bob", "Alexander", "Grace", "Li"]
+
+x = [name for name in names if len(name) >= 5]
+print(x) """
+
+""" 
+numbers = [1,2,3,4,5] #keyz
+squares = {number: number ** 2 for number in numbers}
+print(squares) """
+
+""" prices = {"apple" : 10, "banana" : 5, "orange" : 7}
+
+d_prices = {product: price * 2 for product, price in prices.items()}
+print(d_prices) """
+
+
+""" for inex, lista in enumerate(lista):
+    print(inex, lista) """
+""" 
+
+for index, lista in enumerate(lista, 5):
+    print(index, lista) """
+
+""" names = ["Anna", "Bob", "Charlie", "Darren"]
+scores = [23, 42, 23]
+
+student_scores = dict(zip(names, scores))
+
+print(student_scores) """
+
+""" numbers = [1, 2, 3, 4, 5, 6, 7]
+
+first, *_, last = numbers
+
+print(first)
+
+print(last) """
+""" 
+first = [1, 2, 3]
+second = [4, 5, 6]
+
+combined = [*first, *second]
+
+print(combined) """
+
+""" double = lambda number: number * 2
+print(double(5)) """
+
+""" names = ["xaxxxxxxlve", "balve", "cae", "zalve"]
+
+sorted_names = sorted(names, key=lambda name: len(name))
+
+print(sorted_names) """
+
+""" numbers = [ 1, 2 , 3 ,4 ,5 ,6 ,77]
+
+doubled = map(lambda number: number * 2, numbers)
+print(doubled)
+print(*doubled) """
+
+
+""" numbers = [1, 2, 3, 4, 5, 6]
+even_numbers = list(filter(lambda number: number % 2 == 0, numbers))
+print(even_numbers) """
