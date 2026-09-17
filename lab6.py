@@ -141,3 +141,21 @@ for e, task in enumerate(tasks, 1):
 #lager = list(zip(product, price, stock))
 #print(lager)
 
+#^different lengths
+#data1 = [1, 2, 3, 4, 5]
+#data2 = ["a", "b", "c", "d", "e"]
+#
+#for data_1, data_2 in zip(data1, data2):
+#    print(f"data1: {data_1}, data2: {data_2}")
+#a = 10
+#b = 20
+#a, b = b, a
+#print(a)
+#print(b)
+#
+#
+lista = ["alve", "per", "greger", "cassandra", "markus"]
+
+sorted_lista = sorted(lista, key=lambda name: len(name))
+
+print(sorted_lista)
