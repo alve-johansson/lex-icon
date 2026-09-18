@@ -90,7 +90,7 @@ passed_students = {
 }
 
 print(passed_students) """
-
+## PART C
 """ songs = ["det går en sjöman på vägen - håkan hellström",
          "song 2 - blur",
          "egen måne - han killen",
@@ -154,8 +154,136 @@ for e, task in enumerate(tasks, 1):
 #print(b)
 #
 #
-lista = ["alve", "per", "greger", "cassandra", "markus"]
+######## PART E
+""" lista = ["alve", "per", "greger", "cassandra", "markus"]
 
 sorted_lista = sorted(lista, key=lambda name: len(name))
 
-print(sorted_lista)
+print(sorted_lista) """
+
+""" students = [
+    {"student" : "alve", "score" : 80},
+    {"student" : "zalve", "score" : 70},
+    {"student" : "galve", "score" : 90},
+    {"student" : "kalve", "score" : 60},
+    {"student" : "yalve", "score" : 95},
+    ]
+
+print(sorted(students, key=lambda x: x["score"], reverse=True))
+print(sorted(students, key=lambda x: x["score"], reverse=False)) """
+
+""" products = [
+    {"product" : "alve", "price" : 80},
+    {"product" : "zalve", "price" : 70},
+    {"product" : "galve", "price" : 90},
+    {"product" : "kalve", "price" : 60},
+    {"product" : "yalve", "price" : 95},
+    ]
+
+print(sorted(products, key=lambda x: x["price"])) """
+
+""" fname_lname = [
+    {"fname" : "alve", "lname" : "johansson"},
+    {"fname" : "zalve", "lname" : "pohansson"},
+    {"fname" : "galve", "lname" : "kohansson"},
+    {"fname" : "kalve", "lname" : "wohansson"},
+    {"fname" : "yalve", "lname" : "zohansson"},
+    ]
+
+print(sorted(fname_lname, key= lambda x: x["lname"], reverse = True)) """
+
+""" fname_lname = [
+    {"fname" : "alve", "lname" : "johansson"},
+    {"fname" : "zalve", "lname" : "pohansson"},
+    {"fname" : "galve", "lname" : "kohansson"},
+    {"fname" : "kalve", "lname" : "wohansson"},
+    {"fname" : "yalve", "lname" : "zohansson"},
+    ]
+
+#regular method = "normal function"?
+def get_lastname(person):
+    return person["lname"]
+
+sorted_def = sorted(fname_lname, key=get_lastname)
+
+print(sorted_def)
+
+#lambda method? dont really understand the question tbh
+sorted_lambda = sorted(fname_lname, key=lambda person: person["lname"])
+ """
+
+#### PART F
+
+products = [ ##AI generated:
+    {"name": "  laptop  ", "category": "ELECTRONICS", "price": "12000", "stock": 4},
+    {"name": "mouse", "category": "electronics ", "price": 350.0, "stock": "0"},
+    {"name": " KEYBOARD ", "category": "Electronics", "price": 800, "stock": 6},
+    {"name": "monitor  ", "category": "electronics", "price": " 3200 ", "stock": 3},
+    {"name": "headset", "category": "AUDIO", "price": 950, "stock": "0"},
+    {"name": "  webcam ", "category": "electronics", "price": 1100.5, "stock": 5},
+    {"name": "MICROPHONE", "category": "audio  ", "price": "1500", "stock": 2},
+    {"name": " USB Cable ", "category": "accessories", "price": 150, "stock": "15"},
+    {"name": "desk LAMP", "category": " FURNITURE ", "price": " 450 ", "stock": 8},
+    {"name": "gaming chair", "category": "furniture", "price": 2500, "stock": "1"},
+    {"name": "  hdmi adapter", "category": "ACCESSORIES", "price": "200", "stock": 0},
+    {"name": "SPEAKER  ", "category": "Audio", "price": 1800.0, "stock": "4"}
+]
+
+""" 
+cleaned_products = [
+    {
+        "name": p["name"].strip().capitalize(),
+        "category": p["category"].strip().capitalize(),
+        "price": float(p["price"]),
+        "stock": int(p["stock"])
+    }
+    for p in products
+]
+"""
+
+""" def clean_products(product_list):
+    cleaned_list = []
+    
+    for product in product_list:
+        cleaned_item = {
+            "name": product["name"].strip().capitalize(),
+            "category": product["category"].strip().capitalize(),
+            "price": float(product["price"]),
+            "stock": int(product["stock"])
+        }
+        cleaned_list.append(cleaned_item)
+        
+    return cleaned_list
+
+cleaned_products = clean_products(products)
+print(cleaned_products)
+
+in_stock = [product for product in cleaned_products if product["stock"] > 0]
+print(in_stock)
+
+unique_categories = {product["category"] for product in cleaned_products}
+print(unique_categories)
+
+products_value = {product["name"]: product["price"] * product["stock"] for product in cleaned_products}
+print(products_value)
+
+sorted_products = sorted(products_value.items(), key=lambda item: item[1], reverse = True)
+print(sorted_products)
+
+print("Highest value list:")
+for e, product in enumerate(sorted_products, 1):
+    print(f"{e}. {product[0]} with value: {product[1]}")
+
+names = [product["name"] for product in cleaned_products]
+stocks = [product["stock"] for product in cleaned_products]
+
+for name, stock in zip(names, stocks):
+    print(f"product: {name}, inventory: {stock}")
+
+ """
+### for question 9: I don't know if i understand...
+### both the list comprehension nad the clean_products function looks alright too me
+## I guess you could write something like
+# 
+#cleaned_bad = [{k: (v.strip().capitalize() if isinstance(v, str) else float(v) if "." in str(v) else int(v)) for k, v in p.items()} for p in products]
+# which does not look very readable. IDK.
