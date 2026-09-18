@@ -214,7 +214,7 @@ sorted_lambda = sorted(fname_lname, key=lambda person: person["lname"])
 
 #### PART F
 
-products = [ ##AI generated:
+""" products = [ ##AI generated:
     {"name": "  laptop  ", "category": "ELECTRONICS", "price": "12000", "stock": 4},
     {"name": "mouse", "category": "electronics ", "price": 350.0, "stock": "0"},
     {"name": " KEYBOARD ", "category": "Electronics", "price": 800, "stock": 6},
@@ -228,7 +228,7 @@ products = [ ##AI generated:
     {"name": "  hdmi adapter", "category": "ACCESSORIES", "price": "200", "stock": 0},
     {"name": "SPEAKER  ", "category": "Audio", "price": 1800.0, "stock": "4"}
 ]
-
+ """
 """ 
 cleaned_products = [
     {
@@ -287,3 +287,85 @@ for name, stock in zip(names, stocks):
 # 
 #cleaned_bad = [{k: (v.strip().capitalize() if isinstance(v, str) else float(v) if "." in str(v) else int(v)) for k, v in p.items()} for p in products]
 # which does not look very readable. IDK.
+
+""" listoflists = [[1, 2, 3], [1, 2, 5], [9, 8, 7]]
+
+flat_list = [num for lista in listoflists for num in lista]
+print(flat_list)
+
+nums = [
+    {num : num*2}
+    for num in range(1, 10)
+]
+print(nums)
+ """
+
+""" multi_table = [[base*factor for base in range(1, 10)] for factor in range(1,10)]
+
+for e, table in enumerate(multi_table, 1):
+    print(f"* table of {e}: {table}")
+
+     """
+
+""" names = ["alve", "heithem", "krille p", "jord", "ando"]
+scores = [123, 321, 423, 234, 543, 345]
+
+passed_student = [
+                    {
+                    "name" : name,
+                    "score" : score
+                   }
+                    for name, score in zip(names,scores)
+                    if score > 300
+                   ]
+
+print(passed_student)
+
+ """
+
+""" scores = [123, 321, 423, 234, 543, 345]
+
+all_passed_loop = True
+for score in scores:
+    if score <= 100:
+        all_passed_loop = False
+        break
+
+print(all_passed_loop)
+
+all_passed = all(score > 100 for score in scores)
+print(all_passed)
+
+has_score_500 = False
+for score in scores:
+    if score > 500:
+        has_score_500 = True
+        break
+
+print(has_score_500)
+
+has_score_500 = any(score > 500 for score in scores)
+print(has_score_500) """
+
+##¤¤ 5 exempel på Pythonic syntax
+
+# f-strings
+# istället för: "Produkt: " + name + " - Pris: " + str(price)
+""" text = f"Produkt: {name} - Pris: {price}" """
+
+# variabelswap
+# istället för att skapa en 'temp'-variabel för att byta plats:
+""" a, b = b, a """
+
+# enumerate()
+# slipper skapa 'i = 0' och plussa på 'i += 1' i loopen:
+""" for i, item in enumerate(items, 1):
+    print(i, item) """
+
+# any() / all()
+# slipper skriva loopar med boolean-flaggor och break:
+""" has_stock = any(p["stock"] > 0 for p in products) """
+
+# list / dict Comprehensions
+# skapar och filtrerar samlingar direkt istället för tomma listor + .append():
+""" in_stock = [p for p in products if p["stock"] > 0] """
