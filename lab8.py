@@ -191,10 +191,16 @@ print(bussi_year.get_summary())
  """
 
 ### PART H
+import re
+
 class User():
     def __init__(self, username, email):
+        if re.search(r"\w*[@]\w*[.]\w*", email):
+            self.email = email
+        else:
+            raise ValueError("not a valid email")
+
         self.username = username
-        self.email = email
 
     def get_information(self):
         # Added spaces at the end of strings to keep sentences formatted nicely
@@ -230,5 +236,5 @@ class BaseUser(User):
         return (base_information + f"This user is a {self.__class__.__name__}.\n")
 
 # Testing the code
-alve = AdminUser("Alve", "alvejohansson@pm.me")
+alve = AdminUser("Alve", "alvejohanssonpm.me")
 print(alve.get_information())
