@@ -47,7 +47,6 @@ print(student1.name)
 #  SELF REFERS TOO THE SPECIFIC OBJECT WE ARE CURRENTLY WORKING WITH:
 #  IF WE ARE WORKING WITH STUDENT1, SELF IS STUDENT1
 #  THE CLASS IS THE DEAD OBJECT. SELF IS THE LIVE OBJECT
-#  SOUNDS LIKE SOME POSTHUMANIST MARXISM
 #----------------------------------------------------------------------
 
 """ student2 = Student("Emma", 99)
@@ -96,8 +95,8 @@ print(student2.get_status())
 print(student3.get_status())
  """
 
-############################################################
-# VALIDATION
+#################################
+# VALIDATION                    #
 #################################
 
 """ class Student:              
@@ -254,3 +253,22 @@ for student in course.students:
     print(student.name)
 
 print(course.teacher.name) """
+
+# Dict VS Class
+
+""" student_dict = {
+    "name" : "Ada",
+    "score": 91
+}
+
+class Student:
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+
+student_object = Student("Ada", 91)
+
+
+print(student_dict)
+print(student_object) """

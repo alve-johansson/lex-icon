@@ -218,30 +218,54 @@ print(course.teacher.name) """
 
 ## PART F
 
-class Student:
+""" class Student:
+    passing_score = 70
     def __init__(self, name, score):
+
+        if not (0 <= score <= 100):
+            raise ValueError("Score must be between 0 and 100")
         self.name = name
         self.score = score
 
-    def add_student(self, student, score):
-        self.students.append((student, score))        
-
     def get_status(self):
-        if self.score >= 70:
-            return "PASS"
-        return "FAIL"
+        return "PASS" if self.score >= self.passing_score else "FAIL"
+
+    def update_score(self, new_score):
+        if not (0 <= new_score <= 100):
+            raise ValueError("Score must be between 0 and 100")
+        self.score = new_score
+
 
 class Teacher:
     def __init__(self, name):
         self.name = name
 
+
 class Course:
-    def __init__(self, name, teacher, students):
+    def __init__(self, name, teacher, students=None):
         self.name = name
         self.teacher = teacher
-        self.students = students
 
-students = [
+        self.students = students if students is not None else []
+
+    def add_student(self, student):
+
+        self.students.append(student)
+
+    def get_student_count(self):
+        return len(self.students)
+
+    def get_passed_students(self):
+
+        return [student for student in self.students if student.get_status() == "PASS"]
+
+    def students_above_tresh(self, treshold):
+        return [student for student in self.students if student.score > treshold]
+
+
+teacher = Teacher("Haithem")
+
+students_list = [
     Student("Anna", 85),
     Student("Bob", 65),
     Student("Charlie", 91),
@@ -250,7 +274,34 @@ students = [
     Student("FCharlie", 71)
 ]
 
-teacher = Teacher("Haithem")
 
-course1 = Course("Python Fundamentals", teacher, students)
-Student.add_student("Hora", 10, 100)
+course1 = Course("Python Fundamentals", teacher, students_list)
+
+
+new_student = Student("Gilles", 100)
+course1.add_student(new_student)
+
+
+print(f"Course: {course1.name}")
+print(f"Teacher: {course1.teacher.name}")
+print(f"Total students: {course1.get_student_count()}")
+
+passed_names = [s.name for s in course1.get_passed_students()]
+print(f"Passed students: {', '.join(passed_names)}")
+
+students_who_score_above_tresh = course1.students_above_tresh(80)
+for student in students_who_score_above_tresh:
+    print(student.name)
+
+
+course2_students = [
+    Student("Gilles", 90),
+    Student("Mark", 75)
+]
+
+
+teacher2 = Teacher("Aladdin")
+course2 = Course("AI Fundamentals", teacher2, course2_students)
+
+print("Antal i kurs 1:", course1.get_student_count())
+print("Antal i kurs 2:", course2.get_student_count()) """
