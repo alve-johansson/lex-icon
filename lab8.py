@@ -165,13 +165,70 @@ print(one_plus.year)
 print(work_thinkpad.brand) """
 
 ### PART G
-class Report:
-    def __init__(self):
-        pass
+""" class Report:
+    def __init__(self, author, topic):
+        self.author = author
+        self.topic = topic
 
     def get_summary(self):
-        pass
+        return f"{self.author}: tropics of {self.topic}"
 
 class SalesReport(Report):
-    def __init__(self):
-        super() 
+    def __init__(self, author, topic, sales):
+        super().__init__(author, topic)
+        self.sales = sales
+
+    def get_summary(self):
+        return f"number go up {self.sales}, {self.author} is a gamer, {self.topic} is ok"
+
+
+
+fiscal_year = SalesReport("Todd Mcgowan", "Tendency for profit rate failure",999999)
+bussi_year = Report("Neil Gayman", "Report 2026 Q2")
+
+print(fiscal_year.get_summary())
+print(bussi_year.get_summary())
+ """
+
+### PART H
+class User():
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+
+    def get_information(self):
+        # Added spaces at the end of strings to keep sentences formatted nicely
+        return (
+            f"This user has the username: {self.username}.\n"
+            f"This user is registered by {self.email}.\n"
+        )
+    
+class AdminUser(User):
+    is_admin = True
+    def __init__(self, username, email):
+        super().__init__(username, email)
+
+    def get_information(self):
+        base_information = super().get_information()
+        return (base_information + "User is an administrator.")
+    
+class PremiumUser(User):
+    def __init__(self, username, email):
+        super().__init__(username, email)
+
+    def get_information(self):
+        base_information = super().get_information()
+        return (base_information + "User has a premium subscription.")
+    
+class BaseUser(User):
+    def __init__(self, username, email):
+        super().__init__(username, email)
+
+    def get_information(self):
+        base_information = super().get_information()
+        # Fixed: Changed cls.__name__ to self.__class__.__name__
+        return (base_information + f"This user is a {self.__class__.__name__}.\n")
+
+# Testing the code
+alve = AdminUser("Alve", "alvejohansson@pm.me")
+print(alve.get_information())
