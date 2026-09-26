@@ -167,18 +167,82 @@ print(savies)
 print(monies) """
 
 ############# PART G_G_G_G_G
-class CPU:
-    def __init__(self, model):
-        self.model = model
+#class CPU:
+#    def __init__(self, model):
+#        self.model = model
+#
+#class Computer:
+#    def __init__(self, brand, CPU):
+#        self.brand = brand
+#        self.CPU = CPU
+#
+#
+#cpu = CPU("Ryzen 7U")
+#computer = Computer("Thinkpad", cpu)
+#
+#print(computer.brand, computer.CPU.model)
+#
+#print(hasattr(computer, "CPU"))
+#
+#Computer in fact has CPU and is not a CPU since they don't share attributes.
 
-class Computer:
-    def __init__(self, brand, CPU):
-        self.brand = brand
-        self.CPU = CPU
 
+class Exporter:
+    def __init__(self, data):
+        self.data = data
 
-cpu = CPU("Ryzen 7U")
-computer = Computer("Thinkpad", cpu)
+    def export(self):
+        return f"this is the {self.data}"
 
-print(computer.brand, computer.CPU)
+    def __str__(self):
+        return f"cool bananas {self.data} style"
 
+class ConsoleExporter(Exporter):
+    def __init__(self, data, numb):
+        super().__init__(data)
+        self.numb = numb
+
+    def export(self):
+        return Exporter.export(self) + f" mit the number {self.numb}"
+
+    def __str__(self):
+        return f"cool bananas {self.numb} style"
+
+class TextExporter(Exporter):
+    def __init__(self, data, char):
+        super().__init__(data)
+        self.char = char
+
+    def export(self):
+        return Exporter.export(self) + f" mit the word {self.char}"
+
+    def __str__(self):
+        return f"cool bananas {self.char} style"
+
+class SummaryExporter(Exporter):
+    def __init__(self, data, floa):
+        super().__init__(data)
+        self.floa = floa
+
+    def export(self):
+        return Exporter.export(self) + f" mit the number {self.floa}"
+
+    def __str__(self):
+        return f"cool bananas {self.floa} style"
+
+lista = [
+    obj1 := SummaryExporter("school", 2.8),
+    obj2 := TextExporter("schooliocoolio", "cool"),
+    obj3 := ConsoleExporter("scolios", 123),
+    obj4 := Exporter("wagamama")
+]
+
+for obj in lista:
+    print(obj)
+
+print(isinstance(obj1, Exporter))
+print(isinstance(obj2, ConsoleExporter))
+print(isinstance(obj3, Exporter))
+print(isinstance(obj4, TextExporter))
+
+print(hasattr(obj1, "floa"))
