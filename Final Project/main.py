@@ -17,7 +17,20 @@ class Room:
         clean_status = "Clean" if self.cleaned == True else "Needs cleaning"
         return f"Room {self.number} ({self.__class__.__name__}) - {self.beds} beds - {self.price} SEK [{status}, {clean_status}]"
 
+    def price(self):
+        weekend_tax = 1.25
+        if weekend:
+            self.price = self.price * weekend_tax
+        return self.price
+
+
+class TimeState
+
 class BaseRoom(Room):
+    def __init__(self, number, beds=2, price=800):
+        super().__init__(number, beds, price)
+
+class RedRum(Room):
     def __init__(self, number, beds=2, price=800):
         super().__init__(number, beds, price)
 
@@ -43,9 +56,16 @@ class Staff:
         print(f"Staff {self.name} cleaned room {room.number}.")
 
 bookable_rooms = [
-    BaseRoom(number=101),
+    BaseRoom(number=101, beds = 2, price = 750),
     BaseRoom(number=102),
-    Penthouse(number=501)
+    BaseRoom(number=103),
+    BaseRoom(number=104),
+    BaseRoom(number=105),
+    BaseRoom(number=106),
+    BaseRoom(number=107),
+    BaseRoom(number=108),
+    Penthouse(number=501),
+    Penthouse(number=601)
 ]
 
 
@@ -85,16 +105,16 @@ while menu_active:
         
         if found_room:
             if found_room.occupied:
-                print("Error: Room is already occupied!")
+                print("Room is already occupied!")
             else:
                 name = input("Enter customer name: ")
                 found_room.occupied = True
-                print(f"Success! Room {found_room.number} booked for {name}.")
+                print(f"Room {found_room.number} booked for {name}.")
         else:
             print("Room is not found.")
 
     elif menu_choice == "3":
-        print("Exiting program. Bye bye!")
+        print("Exiting... Bye bye!")
         menu_active = False
     else:
         print("Input out of range, sorry, try again.")
