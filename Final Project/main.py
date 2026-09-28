@@ -4,79 +4,22 @@
 #                                         #
 ###########################################
 
-class Room:
-    def __init__(self, number, beds, price):
-        self.number = number
-        self.beds = beds
-        self.price = price
-        self.cleaned = True
-        self.occupied = False
+'''Imports from other files:'''
+import classes
+from storage import bookable_rooms
 
-    def __str__(self):
-        status = "Occupied" if self.occupied == True else "Available"
-        clean_status = "Clean" if self.cleaned == True else "Needs cleaning"
-        return f"Room {self.number} ({self.__class__.__name__}) - {self.beds} beds - {self.price} SEK [{status}, {clean_status}]"
-
-    def price(self):
-        weekend_tax = 1.25
-        if weekend:
-            self.price = self.price * weekend_tax
-        return self.price
-
-
-class TimeState
-
-class BaseRoom(Room):
-    def __init__(self, number, beds=2, price=800):
-        super().__init__(number, beds, price)
-
-class RedRum(Room):
-    def __init__(self, number, beds=2, price=800):
-        super().__init__(number, beds, price)
-
-
-class Penthouse(Room):
-    def __init__(self, number, beds=4, price=2500):
-        super().__init__(number, beds, price)
-        self.has_jacuzzi = True
-
-
-class Customer:
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-
-
-class Staff:
-    def __init__(self, name):
-        self.name = name
-
-    def clean_room(self, room):
-        room.cleaned = True
-        print(f"Staff {self.name} cleaned room {room.number}.")
-
-bookable_rooms = [
-    BaseRoom(number=101, beds = 2, price = 750),
-    BaseRoom(number=102),
-    BaseRoom(number=103),
-    BaseRoom(number=104),
-    BaseRoom(number=105),
-    BaseRoom(number=106),
-    BaseRoom(number=107),
-    BaseRoom(number=108),
-    Penthouse(number=501),
-    Penthouse(number=601)
-]
-
-
-############################################
+###########################################
 #
 #    T E R M I NA L    I NT E R FA CE
 #
 ###########################################
-print("#----------------------------------#\n"
-      "#  Welcome to the booking program! #\n"
-      "#----------------------------------#\n")
+
+'''Menu logics'''
+print(
+    "#----------------------------------#\n"
+    "#  Welcome to the booking program! #\n"
+    "#----------------------------------#\n"
+      )
 
 menu_active = True
 
@@ -90,13 +33,27 @@ while menu_active:
     menu_choice = input("Choice: ")
 
     if menu_choice == "1":
-        print("\n--- Available Rooms ---")
+        print("\n--- Available Rooms ---") #THIS SHOULD BE CHANGED INTO DISPLAYING ROOM TYPES. 
+                                           #I THINK THIS IS HOW MANY HOTELS DOES. 
+                                           #I'VE LOOKED AT A FEW SMALL LOCAL ONES.
         for room in bookable_rooms:
             if not room.occupied and room.cleaned:
                 print(room)
-                
+    see_available_dates = int(input("press 1 to see dates this month"))
+    if see_available_dates == 1: 
+        print("MON, TUE, WEN, THUR, FRI, SAT, SUN")   ## ALL THIS SHOULD BE MOVED TO NEXT CATEGORY
+        for day in range(1, 31):
+            if day % 7 != 0:
+                #something somthing if room is occupied day x
+                    #print("[XX]")
+                #else
+                print("[  ],", end = "")
+            elif day % 7 == 0:
+                print("[  ]")
+
+        
     elif menu_choice == "2":
-        room_num = input("Enter room number to book: ")
+        room_num = input("Enter room number to book: ") ## CHANGE TOO ROOM TYPE
         found_room = None
         for room in bookable_rooms:
             if str(room.number) == room_num:
