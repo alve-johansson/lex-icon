@@ -1,3 +1,5 @@
+#The point of seperating storage is not just to clean up main, but also to have a clear architecture if one would want to "plug in" another database.
+
 from classes import BaseRoom, PentHouse
 import random
 
@@ -16,5 +18,5 @@ bookable_rooms = [
 ]
 
 customers = [
-    
+
 ]

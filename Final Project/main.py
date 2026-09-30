@@ -10,7 +10,7 @@ from storage import bookable_rooms
 
 ###########################################
 #
-#    T E R M I NA L    I NT E R FA CE
+#   T E R M I N A L    I N T E R F A C E
 #
 ###########################################
 
@@ -26,34 +26,35 @@ menu_active = True
 while menu_active:
     print("\n-- MENU --\n"
           "---------------\n"
-          "1. SEE AVAILABLE ROOMS\n"
+          "1. SEE AVAILABLE ROOM TYPES\n"
           "2. BOOK ROOM\n"
           "3. EXIT PROGRAM\n")
     
     menu_choice = input("Choice: ")
 
     if menu_choice == "1":
-        print("\n--- Available Rooms ---") #THIS SHOULD BE CHANGED INTO DISPLAYING ROOM TYPES. 
+        print("\n--- Available Rooms Types ---") #THIS SHOULD BE CHANGED INTO DISPLAYING ROOM TYPES. 
                                            #I THINK THIS IS HOW MANY HOTELS DOES. 
                                            #I'VE LOOKED AT A FEW SMALL LOCAL ONES.
         for room in bookable_rooms:
             if not room.occupied and room.cleaned:
                 print(room)
-    see_available_dates = int(input("press 1 to see dates this month"))
-    if see_available_dates == 1: 
-        print("MON, TUE, WEN, THUR, FRI, SAT, SUN")   ## ALL THIS SHOULD BE MOVED TO NEXT CATEGORY
-        for day in range(1, 31):
-            if day % 7 != 0:
-                #something somthing if room is occupied day x
-                    #print("[XX]")
-                #else
-                print("[  ],", end = "")
-            elif day % 7 == 0:
-                print("[  ]")
-
+    
         
     elif menu_choice == "2":
         room_num = input("Enter room number to book: ") ## CHANGE TOO ROOM TYPE
+        see_available_dates = int(input("press 1 to see dates this month"))
+        if see_available_dates == 1: 
+            print("MON, TUE, WEN, THUR, FRI, SAT, SUN")   ## ALL THIS SHOULD BE MOVED TO NEXT CATEGORY
+            for day in range(1, 31):
+                if day % 7 != 0:
+                    #something somthing if room is occupied day x
+                    #print("[XX]")
+                    #else
+                    print("[  ],", end = "")
+                elif day % 7 == 0:
+                    print("[  ]")
+
         found_room = None
         for room in bookable_rooms:
             if str(room.number) == room_num:

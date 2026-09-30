@@ -17,9 +17,6 @@ class Room:
 #            self.price = self.price * weekend_tax
         return self.price
 
-class TimeState:
-    pass
-
 class BaseRoom(Room):
     def __init__(self, number, beds=2, price=800):
         super().__init__(number, beds, price)
