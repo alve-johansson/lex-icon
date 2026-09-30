@@ -38,7 +38,7 @@ It's possible to check out but not to ever leave the perimeter. Once you know th
 
 ## Contributing
 
-Ask not just what the program can do for you, but what you can do for the program. Then don't do anything about it.
+Ask not just what the software can do for you, but what you can do for the software. Then don't do anything about it.
 
 ## License
 

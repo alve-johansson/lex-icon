@@ -9,7 +9,7 @@ X    CLI menu
     short and fun README.md
 
 SHOULD HAVE:
-Bussiness statistics
+Bussiness statistics (total income from bookings?, percentage of )
 "Graphical" 30-day matrix
 weekend price
 
@@ -40,12 +40,30 @@ call them from main, make sure this works
 
 2. logics and stuff
 create the data [] rooms, and [] bookings
+
 method: create booking check is_available and if dates is in range
 else ValueError
 
 method: cancel_booking
 removes the booked day from the specific room
 
-method: generate mock data
+function generate mock data (customers, rooms)
+function generate mock "month" being a list of days 1 - 30
+give each "date" a weekday in correct order
+
+this list of dates is the main database
+
+day[1] = {
+    "weekday": "monday"
+    booked_rooms: [
+    {"room" : 101, "booker" : "john smith"},
+    {"room" : 104, "booker" : "john smith"},
+    {"room" : 107, "booker" : "john smith"}
+    ]
+    }
+
+rooms not booked day x is in some pseudo: "room in rooms not in booked_rooms"
+
+once every three week it's monday all week. meme.
 
 test if everything works
