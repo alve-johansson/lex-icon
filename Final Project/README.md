@@ -16,7 +16,7 @@ This python script is a part of my education as a developer and is not intended 
 ## Installation
 
 ```bash
-There is no installation, just removal.
+There's no installation, just removal.
 ```
 
 ## Usage
