@@ -7,12 +7,11 @@ weekdays = ["Mon", "Tues", "Wen", "Thur", "Fri", "Sat", "Sun"]
 day = {}
 for i in range(1, 31):
     day[i] = {
-        "weekday" : weekdays[i % 7],
+        "weekday" : weekdays[(i-1) % 7],
         "booked_rooms": []
     }
 
-for days in day:
-    print(days)
+print(day[1])
 #list of actual room objects in hotel
 rooms = [
     m.HotelRoom(number=101, price=800, max_occupancy=2, booked_days= []),
@@ -30,13 +29,20 @@ guests = [
     m.Guest("Danny", "Torrance", "redrum@shining.com"),
     m.Guest("Dick", "Hallorann", "dick@hotelcalifornia.com"),
     m.Guest("Humbert", "Humbert", "humhum@uone.edu"),
-    m.Guest("Dolores", "Haze"),
-    m.Guest("Micheal", "Houellebecq", "jouissance@sendmail.fr")    
+    m.Guest("Dolores", "Haze"), #can Dolores be the "child" of Humbert?
+    m.Guest("Micheal", "Houellebecq", "jouissance@sendmail.fr") #smoking alarm turned off after each visit, bottles of chablis everywhere    
 ]
 
 
 #list of actual bookings in hotel
 bookings = [
+    m.Booking(
+        booking_id=3,
+        guest=guests[2],
+        room=rooms[2], # RedRum 666
+        check_in_date=1,
+        check_out_date=3
+    ),
     m.Booking(
         booking_id=1,
         guest=guests[0],

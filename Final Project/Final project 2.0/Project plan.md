@@ -67,3 +67,7 @@ rooms not booked day x is in some pseudo: "room in rooms not in booked_rooms"
 once every three week it's monday all week. meme.
 
 test if everything works
+
+
+child guest belongs to parent guest? 
+recursive class?

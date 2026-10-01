@@ -65,12 +65,12 @@ class RedRum(Room):
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠙⠉⠋⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 \n'''
 
-    def __init__(self, number):
-        super().__init__(number)
+    def __init__(self, number, price, max_occupancy, booked_days):
+        super().__init__(number, price, max_occupancy, booked_days)
         self.has_jacuzzi = True
 
 class Guest:
-    def __init__(self, first_name, last_name, email):
+    def __init__(self, first_name, last_name, email=None):
         self.first_name = first_name
         self.last_name = last_name
         self.email = email

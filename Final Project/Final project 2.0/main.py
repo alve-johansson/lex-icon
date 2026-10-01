@@ -51,17 +51,27 @@ Included in all room bookings is:
             "PRESS 4. TO RETURN\n")
         room_availability = input()
         if room_availability == 1:
-            pass #HERE THERE SHOULD BE A FUNCTION TO PASS ROOM TYPE
+            pass #HERE THERE SHOULD BE A FUNCTION TO PASS ROOM TYPE AND THEN REQUESTED DATE
         if room_availability == 2:
             pass
         if room_availability == 3:
             pass
         if room_availability == 4:
             break 
-    elif choice == "3":
-        pass
-    elif choice == "4":
-        pass
+    elif choice == "3": 
+        print("BOOK A ROOM")
+        name = input("NAME: ")
+        room_number = int(input("ROOM NUMBER: "))
+        arrival = int(input("ARRIVAL DAY: "))
+        departure = int(input("DEPARTURE DAY: "))
+        #actual #book_room(name, room_number, arrival, departure) function
+    elif choice == "4": 
+        print("CANCEL A BOOKING")
+        name = input("NAME: ")
+        room_number = int(input("ROOM NUMBER: "))
+        arrival = int(input("ARRIVAL DAY: "))
+        departure = int(input("DEPARTURE DAY: "))
+        #actual #cancel_booking(name, room_number, arrival, departure) function
     elif choice == "5":
         print("\n\n Just kidding, you are not allowed leave. You are here forever. \n\n")
         time.sleep(1)
