@@ -79,13 +79,16 @@ class Guest:
         return f"{self.first_name} {self.last_name} ({self.email})"
 
 class Booking:
-    def __init__(self, booking_id, guest, room, check_in_date, check_out_date):
+    def __init__(self, booking_id, guest, room, check_in_date, check_out_date, days):
         self.booking_id = booking_id
         self.guest = guest
         self.room = room 
         self.check_in_date = check_in_date 
         self.check_out_date = check_out_date
+        self.days = days
 
+        return 
+    
 def __str__(self):
         return f"Bokning #{self.booking_id}: {self.guest.first_name} {self.guest.last_name} | Rum {self.room.number} | Day {self.check_in_date}-{self.check_out_date}"
 

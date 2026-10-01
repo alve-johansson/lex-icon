@@ -4,14 +4,27 @@
 import models as m
 
 weekdays = ["Mon", "Tues", "Wen", "Thur", "Fri", "Sat", "Sun"]
-day = {}
+next_day_index = 2
+
+days = {}
 for i in range(1, 31):
-    day[i] = {
+    days[i] = {
         "weekday" : weekdays[(i-1) % 7],
         "booked_rooms": []
     }
 
-print(day[1])
+def move_forward_one_day():
+    global next_day_index
+    
+    for i in range(1, 30):
+        days[i] = days[i + 1]
+
+    days[30] = {
+        "weekday": weekdays[next_day_index],
+        "booked_rooms" : []
+    }
+    
+
 #list of actual room objects in hotel
 rooms = [
     m.HotelRoom(number=101, price=800, max_occupancy=2, booked_days= []),
@@ -65,3 +78,7 @@ bookings = [
         check_out_date=30
     )
 ]
+
+print(days[1])
+move_forward_one_day()
+print(days[1])
