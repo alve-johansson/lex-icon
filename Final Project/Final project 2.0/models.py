@@ -7,7 +7,7 @@ class Room:
     def __init__(self, number, price, max_occupancy, booked_days=None):
         self.number = number
         self.price = price
-        self.max_occupancy = max_occupancy
+        self.max_occupancy = max_occupancy # Not really used :() for later future USEAGE
         self.booked_days = booked_days if booked_days is not None else []
 
     def is_available(self, check_in, check_out):

@@ -95,7 +95,7 @@ Included in all room bookings is:
             else:
                 room = next((r for r in b.rooms if r.number == room_number), None)
                 try:
-                    guest = m.Guest(name, "")
+                    guest = m.Guest(name, "") # saves only one name
                     booking = b.book_room(guest, room, arrival, departure)
                     print(f"\nBOOKING SUCCESSFUL! Booking ID: {booking.booking_id}")
                 except ValueError as e:
