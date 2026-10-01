@@ -1,9 +1,9 @@
-#In this file: logics and the storage of actual data
+'''This file handles the logics and the storage of actual data'''
 
 #imports
 import models as m
 
-weekdays = ["Mon", "Tues", "Wen", "Thur", "Fri", "Sat", "Sun"]
+weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 next_day_index = 2
 
 days = {}
@@ -23,7 +23,9 @@ def move_forward_one_day():
         "weekday": weekdays[next_day_index],
         "booked_rooms" : []
     }
-    
+
+    next_day_index = (next_day_index + 1) % 7 
+
 
 #list of actual room objects in hotel
 rooms = [
@@ -49,36 +51,20 @@ guests = [
 
 #list of actual bookings in hotel
 bookings = [
-    m.Booking(
-        booking_id=3,
-        guest=guests[2],
-        room=rooms[2], # RedRum 666
-        check_in_date=1,
-        check_out_date=3
-    ),
-    m.Booking(
-        booking_id=1,
-        guest=guests[0],
-        room=rooms[0], # Rum 101
-        check_in_date=1,
-        check_out_date=5
-    ),
-    m.Booking(
-        booking_id=2,
-        guest=guests[1],
-        room=rooms[3], # Suite 201
-        check_in_date=10,
-        check_out_date=15
-    ),
-    m.Booking(
-        booking_id=3,
-        guest=guests[2],
-        room=rooms[5], # RedRum 666
-        check_in_date=20,
-        check_out_date=30
-    )
-]
+    ]
 
-print(days[1])
-move_forward_one_day()
-print(days[1])
+def book_room(guest, room, check_in, check_out): ## the book_room function uses guest room and check in and check out parameter
+    if check_in >= check_out: #you cannot book from 3d day to 1st day.
+        raise ValueError("Departure must be after arrival.")
+    if check_in < 1 or check_out > 31: #in this system you cannot book more than 30 days in advance
+        raise ValueError("Days must be between 1 and 30.")
+    if not room.is_available(check_in, check_out): # if the room is unavailable. Should this really be a valueError thoug?
+        raise ValueError(f"Room {room.number} is not available on those days.")
+
+    for day in range(check_in, check_out):
+        room.booked_days.append(day) ## add the days of the booking to booked days
+
+    new_id = max([b.booking_id for b in bookings], default=0) + 1
+    booking = m.Booking(new_id, guest, room, check_in, check_out)
+    bookings.append(booking)
+    return booking

@@ -1,3 +1,7 @@
+'''This is the main file, it handles input and output of the software'''
+
+
+
 import models as m
 import booking_system as b
 import time
