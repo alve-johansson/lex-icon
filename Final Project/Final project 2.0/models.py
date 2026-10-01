@@ -87,4 +87,5 @@ class Booking:
         self.check_out_date = check_out_date
 
 def __str__(self):
-        return f"Bokning #{self.booking_id}: {self.guest.first_name} {self.guest.last_name} | Rum {self.room.number} | Dag {self.check_in_date}-{self.check_out_date}"
+        return f"Bokning #{self.booking_id}: {self.guest.first_name} {self.guest.last_name} | Rum {self.room.number} | Day {self.check_in_date}-{self.check_out_date}"
+

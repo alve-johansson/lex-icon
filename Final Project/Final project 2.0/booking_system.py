@@ -3,17 +3,24 @@
 #imports
 import models as m
 
+weekdays = ["Mon", "Tues", "Wen", "Thur", "Fri", "Sat", "Sun"]
+day = {}
+for i in range(1, 31):
+    day[i] = {
+        "weekday" : weekdays[i % 7],
+        "booked_rooms": []
+    }
 
-#storage needed: rooms and bookings
-
+for days in day:
+    print(days)
 #list of actual room objects in hotel
 rooms = [
-    m.HotelRoom(number=101, price=800, max_occupancy=2),
-    m.HotelRoom(number=102, price=800, max_occupancy=2),
-    m.HotelRoom(number=103, price=850, max_occupancy=2),
-    m.Suite(number=201, price=1800, max_occupancy=4),
-    m.Suite(number=202, price=2000, max_occupancy=4),
-    m.RedRum(number=666, price=6666, max_occupancy=1)
+    m.HotelRoom(number=101, price=800, max_occupancy=2, booked_days= []),
+    m.HotelRoom(number=102, price=800, max_occupancy=2, booked_days= []),
+    m.HotelRoom(number=103, price=850, max_occupancy=2, booked_days= []),
+    m.Suite(number=201, price=1800, max_occupancy=4, booked_days= []),
+    m.Suite(number=202, price=2000, max_occupancy=4, booked_days= []),
+    m.RedRum(number=666, price=6666, max_occupancy=1, booked_days= [])
 ]
 
 #list of guests
@@ -23,7 +30,8 @@ guests = [
     m.Guest("Danny", "Torrance", "redrum@shining.com"),
     m.Guest("Dick", "Hallorann", "dick@hotelcalifornia.com"),
     m.Guest("Humbert", "Humbert", "humhum@uone.edu"),
-    m.Guest("Dolores", "Haze")
+    m.Guest("Dolores", "Haze"),
+    m.Guest("Micheal", "Houellebecq", "jouissance@sendmail.fr")    
 ]
 
 
