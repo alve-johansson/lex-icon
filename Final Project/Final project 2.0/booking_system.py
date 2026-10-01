@@ -3,29 +3,6 @@
 #imports
 import models as m
 
-weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-next_day_index = 2
-
-days = {}
-for i in range(1, 31):
-    days[i] = {
-        "weekday" : weekdays[(i-1) % 7],
-        "booked_rooms": []
-    }
-
-def move_forward_one_day():
-    global next_day_index
-    
-    for i in range(1, 30):
-        days[i] = days[i + 1]
-
-    days[30] = {
-        "weekday": weekdays[next_day_index],
-        "booked_rooms" : []
-    }
-
-    next_day_index = (next_day_index + 1) % 7 
-
 
 #list of actual room objects in hotel
 rooms = [
@@ -44,33 +21,38 @@ guests = [
     m.Guest("Danny", "Torrance", "redrum@shining.com"),
     m.Guest("Dick", "Hallorann", "dick@hotelcalifornia.com"),
     m.Guest("Humbert", "Humbert", "humhum@uone.edu"),
-    m.Guest("Dolores", "Haze"), #can Dolores be the "child" of Humbert?
-    m.Guest("Micheal", "Houellebecq", "jouissance@sendmail.fr") #smoking alarm turned off after each visit, bottles of chablis everywhere    
+    m.Guest("Dolores", "Haze"), # Thought: can Dolores be the "child" of Humbert?
+    m.Guest("Micheal", "Houellebecq", "jouissance@sendmail.fr") # smoking alarm turned off after each visit, bottles of chablis everywhere    
 ]
-
 
 #list of actual bookings in hotel
 bookings = [
     ]
 
-def book_room(guest, room, check_in, check_out): ## the book_room function uses guest room and check in and check out parameter
-    if check_in >= check_out: #you cannot book from 3d day to 1st day.
+def book_room(guest, room, check_in, check_out):
+    '''Books a room for the nights from check_in up to (not including) check_out.
+    Raises ValueError if the dates are invalid or the room is already taken.
+    Updates both the room's booked_days and the bookings list.'''
+    if check_in >= check_out: # you cannot book from 3rd day to 1st day.
         raise ValueError("Departure must be after arrival.")
-    if check_in < 1 or check_out > 31: #in this system you cannot book more than 30 days in advance
+    if check_in < 1 or check_out > 31: # in this system the window is for 30 days in advance
         raise ValueError("Days must be between 1 and 30.")
     if not room.is_available(check_in, check_out):
         raise ValueError(f"Room {room.number} is not available on those days.")
 
     for day in range(check_in, check_out):
-        room.booked_days.append(day) ## add the days of the booking to booked days
+        room.booked_days.append(day) # add the days of the booking to booked days
 
+    # highest existing id + 1 (starts at 1 if there are no bookings).
     new_id = max([b.booking_id for b in bookings], default=0) + 1
     booking = m.Booking(new_id, guest, room, check_in, check_out)
     bookings.append(booking)
     return booking
 
 def cancel_booking(booking_id):
-    for b in bookings: #if it is booked. 
+    '''Cancels the booking with the given id and frees its nights.
+    Returns True if a booking was removed, False if the id does not exist.'''
+    for b in bookings: # if it is booked. 
         if b.booking_id == booking_id: 
             for day in range(b.check_in_date, b.check_out_date):
                 if day in b.room.booked_days:
@@ -79,5 +61,12 @@ def cancel_booking(booking_id):
             return True
     return False
 
+'''Returns a list of all rooms that are free for every night in the period.'''
 def get_available_rooms(check_in, check_out):
     return [r for r in rooms if r.is_available(check_in, check_out)]
+
+
+# Starting data so there is something to demo (rooms 101, 201, 666).
+book_room(guests[0], rooms[0], 1, 5)
+book_room(guests[1], rooms[3], 10, 15)
+book_room(guests[2], rooms[5], 20, 30)
