@@ -2,7 +2,7 @@
 
 class Room:
     '''This is the room class, it handles room number, price, and max occupancy'''
-    def __init__(self, number, price, max_occupancy):
+    def __init__(self, number, price, max_occupancy, booked_days=None):
         self.number = number
         self.price = price
         self.max_occupancy = max_occupancy

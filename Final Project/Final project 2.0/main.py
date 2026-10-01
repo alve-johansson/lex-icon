@@ -68,14 +68,16 @@ Included in all room bookings is:
         room_number = int(input("ROOM NUMBER: "))
         arrival = int(input("ARRIVAL DAY: "))
         departure = int(input("DEPARTURE DAY: "))
-        #actual #book_room(name, room_number, arrival, departure) function
+        booking = b.book_room(name, room_number, arrival, departure)
+        print("BOOK ROOMED :D")
+    
     elif choice == "4": 
         print("CANCEL A BOOKING")
         name = input("NAME: ")
         room_number = int(input("ROOM NUMBER: "))
         arrival = int(input("ARRIVAL DAY: "))
         departure = int(input("DEPARTURE DAY: "))
-        #actual #cancel_booking(name, room_number, arrival, departure) function
+        b.cancel_booking(name, room_number, arrival, departure)
     elif choice == "5":
         print("\n\n Just kidding, you are not allowed leave. You are here forever. \n\n")
         time.sleep(1)

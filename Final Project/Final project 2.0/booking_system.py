@@ -58,7 +58,7 @@ def book_room(guest, room, check_in, check_out): ## the book_room function uses 
         raise ValueError("Departure must be after arrival.")
     if check_in < 1 or check_out > 31: #in this system you cannot book more than 30 days in advance
         raise ValueError("Days must be between 1 and 30.")
-    if not room.is_available(check_in, check_out): # if the room is unavailable. Should this really be a valueError thoug?
+    if not room.is_available(check_in, check_out):
         raise ValueError(f"Room {room.number} is not available on those days.")
 
     for day in range(check_in, check_out):
@@ -68,3 +68,16 @@ def book_room(guest, room, check_in, check_out): ## the book_room function uses 
     booking = m.Booking(new_id, guest, room, check_in, check_out)
     bookings.append(booking)
     return booking
+
+def cancel_booking(booking_id):
+    for b in bookings: #if it is booked. 
+        if b.booking_id == booking_id: 
+            for day in range(b.check_in_date, b.check_out_date):
+                if day in b.room.booked_days:
+                    b.room.booked_days.remove(day)
+            bookings.remove(b)
+            return True
+    return False
+
+def get_available_rooms(check_in, check_out):
+    return [r for r in rooms if r.is_available(check_in, check_out)]
