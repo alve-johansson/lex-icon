@@ -90,7 +90,7 @@ SELECT *
 FROM products
 ORDER BY price ASC
 LIMIT 5 OFFSET 5;
-Bonus 5: Show customers who joined before 2025 and don't live in Uppsala. Sort by city, and by last name within the same city. (4 rows)
+Bonus 5: Show customers who joined before 2025 and dont live in Uppsala. Sort by city, and by last name within the same city. (4 rows)
 
 SQL
 SELECT *
@@ -135,7 +135,7 @@ WHERE joined_date > '2023-12-31'
 ORDER BY joined_date DESC
 LIMIT 3;
 Level 2
-Exercise 5: Show each customer's full name in one column called full_name, sorted by last name. (10 rows)
+Exercise 5: Show each customers full name in one column called full_name, sorted by last name. (10 rows)
 
 SQL
 SELECT first_name || ' ' || last_name AS full_name
@@ -151,7 +151,7 @@ SELECT name, price,
     ELSE 'premium'
   END AS price_category
 FROM products;
-Exercise 7: Show every customer's first name and city, but write Unknown instead of NULL. (10 rows)
+Exercise 7: Show every customers first name and city, but write Unknown instead of NULL. (10 rows)
 
 SQL
 SELECT first_name, COALESCE(city, 'Unknown') AS city
@@ -169,7 +169,7 @@ SELECT *
 FROM products
 ORDER BY LENGTH(name) DESC
 LIMIT 1;
-Exercise 10: Show each customer's email username: the part before the @. (10 rows)
+Exercise 10: Show each customers email username: the part before the @. (10 rows)
 
 SQL
 SELECT SUBSTR(email, 1, INSTR(email, '@') - 1) AS emailname
