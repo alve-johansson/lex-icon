@@ -1,0 +1,106 @@
+##excersise 1
+""" As I wrote in my book club thingy I don't thing the reviews should be embedded in the book collection.
+Rather be a colletion of ones own. The reviews/rating, does belong to the user as well.. This is common
+in places like goodreads. You would want to be able to not just calculate the average ratings of a Book
+but also the average score given from a loan-taker.
+Members are for sure another collection. """
+
+##exersise 2
+""" More space taken. Fast read. Maybe products change name... you need freeze in time? 
+But you don't have to lookup the name from the referenced product id pointing to products. """
+
+from pymongo import MongoClient
+from pymongo.errors import OperationFailure
+client = MongoClient("mongodb://localhost:27017/")
+db = client["webshop"]
+
+""" db.create_collection(
+    "newsletter_signup",
+    validator={
+        "$jsonSchema": {
+            "bsonType": "object",
+            "required": ["email"],
+            "properties": {
+                "email": {
+                    "bsonType": "string"
+                },
+                "source": {
+                    "enum": [
+                        "Web",
+                        "Store",
+                    ],
+                    "description": "Must be either Web or Store",
+                },
+            },
+        }
+    },
+) """
+
+""" new_subscriber1 = {
+    "email": "alvejohansson@email.com",
+    "source": "swag",
+}
+
+new_subscriber2 = {
+    "email": "alvejohansson@email.com",
+    "source": "Web",
+}
+
+
+try:
+    db.newsletter_signup.insert_one(new_subscriber1)
+    print("Test 1 misslyckades: Den tillät 'swag'!")
+except OperationFailure as e:
+    print(
+        "Test 1 lyckades! Validatorn stoppade 'swag' med felmeddelande:", e.details.get("errmsg")
+    )
+
+try:
+    result = db.newsletter_signup.insert_one(new_subscriber2)
+    print("Test 2 lyckades! Sparade med ID:", result.inserted_id)
+except OperationFailure as e:
+    print("Test 2 misslyckades oväntat:", e) """
+
+""" result = db.customers.aggregate([
+ {"$group": {"_id": "$city", # step 2
+ "customer_count": {"$sum": 1}}},
+ {"$sort": {"orders": -1}}, # step 3
+])
+
+for x in result:
+    print(x) """
+
+
+
+result = db.products.aggregate(
+    [
+    {"$sort": {"category": 1, "price": 1}},
+    {
+        "$group": {
+            "_id": "$category",
+            "min_price": {"$min": "$price"},
+            "cheapest_product": {"$first": "$name"},
+            
+            "max_price": {"$max": "$price"},
+            "most_expensive_product": {"$last": "$name"}
+        }
+    }
+]
+)
+
+for x in result:
+    print(f"Kategori: {x['_id']}")
+    print(f"  Billigast: {x['cheapest_product']} ({x['min_price']} kr)")
+    print(f"  Dyrast: {x['most_expensive_product']} ({x['max_price']} kr)\n")
+
+
+
+
+result = db.customers.aggregate(
+    [
+        {"$group": {
+            "_id": "$_id"
+            
+        }}
+    ]
+)
